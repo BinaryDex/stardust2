@@ -1,25 +1,20 @@
-function go(value) {
-  let iframe = document.querySelector(".iframe.active");
-  window.navigator.serviceWorker
-    .register("sw.js", {
-      scope: __uv$config.prefix,
-    })
-    .then(() => {
-      let url = value.trim();
-      if (!isUrl(url)) url = "https://www.google.com/search?q=" + url;
-      else if (!(url.startsWith("https://") || url.startsWith("http://")))
-        url = "https://" + url;
-      //pass the encoded url to the second page
-      sessionStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
-      location.href = "go";
-    });
+function openDex(url) {
+  // Create a new window
+  const newWindow = window.open('', '_blank');
+
+  // Create an iframe element
+  const iframe = document.createElement('iframe');
+  iframe.src = 'about:blank'; // Set the iframe source to about:blank
+
+  // Wait for the iframe to load
+  iframe.onload = function () {
+    // Set the iframe's source to the desired URL
+    iframe.contentWindow.location.replace(url);
+  };
+
+  // Append the iframe to the new window's document
+  newWindow.document.body.appendChild(iframe);
 }
 
-function isUrl(val = "") {
-  if (
-    /^http(s?):\/\//.test(val) ||
-    (val.includes(".") && val.substr(0, 1) !== " ")
-  )
-    return true;
-  return false;
-}
+// Example usage
+openNewTabWithContent('https://example.com');
