@@ -11,10 +11,17 @@ function openDex(url) {
   iframe.style.height = '100%';
   iframe.style.border = 'none';
 
+  // Flag to track whether the content is already loaded
+  let contentLoaded = false;
+
   // Wait for the iframe to load
   iframe.onload = function () {
-    // Set the iframe's source to the desired URL
-    iframe.contentWindow.location.replace(url);
+    // Check if the content is already loaded
+    if (!contentLoaded) {
+      // Set the iframe's source to the desired URL
+      iframe.contentWindow.location.replace(url);
+      contentLoaded = true; // Update the flag
+    }
   };
 
   // Append the iframe to the new window's document
