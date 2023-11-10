@@ -1,4 +1,4 @@
-function openDex(url) {
+function go(url) {
   // Create a new window
   const newWindow = window.open('', '_blank');
 
