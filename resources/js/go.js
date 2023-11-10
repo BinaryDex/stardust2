@@ -6,6 +6,11 @@ function openDex(url) {
   const iframe = document.createElement('iframe');
   iframe.src = 'about:blank'; // Set the iframe source to about:blank
 
+  // Set the iframe styles
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+
   // Wait for the iframe to load
   iframe.onload = function () {
     // Set the iframe's source to the desired URL
@@ -15,6 +20,3 @@ function openDex(url) {
   // Append the iframe to the new window's document
   newWindow.document.body.appendChild(iframe);
 }
-
-// Example usage
-openNewTabWithContent('https://example.com');
