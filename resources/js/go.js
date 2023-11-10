@@ -1,4 +1,4 @@
-function openNewTabWithContent(url) {
+function openDex(url) {
   // Create a new window
   const newWindow = window.open('', '_blank');
 
